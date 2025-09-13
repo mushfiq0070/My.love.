@@ -1,0 +1,144 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমার প্রশ্ন – Prank Version</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(120deg, #fbc2eb, #a6c1ee);
+    overflow: hidden;
+  }
+  .container {
+    background-color: #ffffffcc;
+    padding: 35px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 400px;
+    width: 90%;
+    transition: transform 0.3s ease;
+  }
+  h1 { font-size: 2rem; margin-bottom: 25px; }
+  .buttons button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+    position: relative;
+  }
+  #yesButton { background-color: #4CAF50; color: white; }
+  #yesButton:hover { transform: scale(1.1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+  #noButton { background-color: #f44336; color: white; }
+  #noButton:hover { transform: scale(1.1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+  #message { font-size: 1.5rem; margin-top: 25px; color: #333; opacity: 0; transition: opacity 0.8s ease; }
+  #videoContainer { margin-top: 20px; width: 100%; border-radius: 10px; overflow: hidden; display: none; }
+  #videoPlayer { width: 100%; height: 250px; border: none; }
+  @media(min-width:600px){ #videoPlayer { height: 315px; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1 id="question">তুমি কি আমাকে ভালোবাসো? ❤️</h1>
+  <div class="buttons">
+    <button id="yesButton">হ্যাঁ</button>
+    <button id="noButton">না</button>
+  </div>
+  <p id="message"></p>
+  <div id="videoContainer">
+    <iframe id="videoPlayer" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  </div>
+</div>
+
+<script>
+const noButton = document.getElementById('noButton');
+const yesButton = document.getElementById('yesButton');
+const message = document.getElementById('message');
+const question = document.getElementById('question');
+const videoContainer = document.getElementById('videoContainer');
+const videoPlayer = document.getElementById('videoPlayer');
+
+const noMessages = [
+  "না", "আরেকবার ভাবো...", "দয়া করে হ্যাঁ বলো! 🙏",
+  "আমার মন ভেঙে যাবে 💔", "শেষ সুযোগ! 🥺", "প্লিজ!",
+  "ভালোবাসো না বুঝি? 😔", "আমি রাগ করবো! 😠", "সত্যি করে বলো..."
+];
+
+// একবারে evade effect
+let noClicked = false;
+noButton.addEventListener('click', () => {
+  if (!noClicked) {
+    const randomMsg = noMessages[Math.floor(Math.random() * noMessages.length)];
+    noButton.textContent = randomMsg;
+    const maxX = window.innerWidth - noButton.offsetWidth - 20;
+    const maxY = window.innerHeight - noButton.offsetHeight - 20;
+    const newX = Math.random() * maxX;
+    const newY = Math.random() * maxY;
+    noButton.style.position = 'absolute';
+    noButton.style.left = `${newX}px`;
+    noButton.style.top = `${newY}px`;
+    noClicked = true; // একবারে কাজ হয়ে গেল
+  }
+});
+
+// Yes বাটন ক্লিক
+yesButton.addEventListener('click', () => {
+  question.style.display = 'none';
+  yesButton.style.display = 'none';
+  noButton.style.display = 'none';
+  message.style.opacity = "1";
+  message.innerHTML = "আমি জানতাম তুমি আমাকে ভালোবাসো! 🥰💖😍";
+  videoContainer.style.display = 'block';
+  videoPlayer.src = "https://www.youtube.com/embed/gwA1t5jxTbY?autoplay=1";
+});
+</script>
+
+</body>
+</html>
